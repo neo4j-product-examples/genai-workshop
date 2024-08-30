@@ -37,6 +37,8 @@ jobs:
           --region $AURA_REGION \
           --cloud-provider $AURA_CLOUD_PROVIDER \
           >> ws.env
+        env:
+           ENV_FILE: ws.env
 
       - name: Run data loading notebook
         run: |
@@ -63,12 +65,13 @@ jobs:
 
       - name: Delete Aura instance
         run: |
-          source ws.env
           python .github/scripts/aura.py delete \
            --tenant-id $AURA_TENANT_ID \
            --client-id $AURA_CLIENT_ID \
            --client-secret $AURA_CLIENT_SECRET \
-           --instance-id $AURA_INSTANCEID 
+           --instance-id $AURA_INSTANCEID
+        env:
+          ENV_FILE: ws.env
 
       - name: Commit and push notebook with outputs
         run: |
