@@ -30,6 +30,7 @@ jobs:
 
       - name: Create Aura instance
         run: |
+         source ws.env
          python .github/scripts/aura.py configure \
           --tenant-id $AURA_TENANT_ID \
           --client-id $AURA_CLIENT_ID \
@@ -65,6 +66,7 @@ jobs:
 
       - name: Delete Aura instance
         run: |
+          source ws.env
           python .github/scripts/aura.py delete \
            --tenant-id $AURA_TENANT_ID \
            --client-id $AURA_CLIENT_ID \
