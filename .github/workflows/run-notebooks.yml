@@ -1,0 +1,79 @@
+name: Run Notebook and Commit Version With Output
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+jobs:
+  run-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter nbconvert
+
+      - name: Create env file
+        run: |
+          echo "${{ secrets.WORKSHOP_ENV }}" > ws.env
+
+      - name: Create Aura instance
+        run: |
+         python .github/scripts/aura.py configure \
+          --tenant-id $AURA_TENANT_ID \
+          --client-id $AURA_CLIENT_ID \
+          --client-secret $AURA_CLIENT_SECRET \
+          --region $AURA_REGION \
+          --cloud-provider $AURA_CLOUD_PROVIDER \
+          >> ws.env
+
+      - name: Run data loading notebook
+        run: |
+          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute data-load.ipynb
+          rm data-load.nbconvert.ipynb
+        env:
+          ENV_FILE: ws.env
+
+      - name: Run and save workshop notebook
+        run: |
+          export AUTOMATED_RUN=true
+          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute genai-workshop.ipynb
+          mv genai-workshop.nbconvert.ipynb genai-workshop-w-outputs.ipynb
+        env:
+          ENV_FILE: ws.env
+
+      - name: Run example-app-only notebook
+        run: |
+          export AUTOMATED_RUN=true
+          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute genai-example-app-only.ipynb
+          rm genai-example-app-only.nbconvert.ipynb
+        env:
+          ENV_FILE: ws.env
+
+      - name: Delete Aura instance
+        run: |
+          source ws.env
+          python .github/scripts/aura.py delete \
+           --tenant-id $AURA_TENANT_ID \
+           --client-id $AURA_CLIENT_ID \
+           --client-secret $AURA_CLIENT_SECRET \
+           --instance-id $AURA_INSTANCEID 
+
+      - name: Commit and push notebook with outputs
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add genai-workshop-w-outputs.ipynb
+          git commit -m "Auto-commit: Run notebook and update notebook with output file"
+          git push
