@@ -33,9 +33,9 @@ The other companion notebooks contain code for staging data, building the Neo4j 
   - Various other minor adjustments to markdown and code to improve course quality
 
 
-- Added `genai-workshop-with-outputs.ipynb` and GitHub Actions Workflow
+- Added `genai-workshop-w-outputs.ipynb` and GitHub Actions Workflow
   - `genai-workshp.ipynb` is now maintained with cleared outputs for better workshop experience and easier PR review
-  - A GitHub actions workflow automatically tests data loading, workshop, and example-only notebooks and auto-commits `genai-workshop-with-outputs.ipynb` file for each PR. 
+  - A GitHub actions workflow automatically tests data loading, workshop, and example-only notebooks and auto-commits `genai-workshop-w-outputs.ipynb` file for each PR. 
 
 ### [v3 (June 25th, 2024 - Sep 1st, 2024)](https://github.com/neo4j-product-examples/genai-workshop/releases/tag/v3.0)
 
