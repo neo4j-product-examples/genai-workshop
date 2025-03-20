@@ -1,6 +1,6 @@
 # GraphRAG Workshops
 
-This repository contains two GraphRAG workshops: **Customers and Products** and **Talent**. Each workshop provides notebooks, data, and resources for hands-on exercises.
+This repository contains two GraphRAG workshops: **Talent** and **Customers+Products**. Each workshop provides notebooks, data, and resources for hands-on exercises.
 
 ## Workshops
 
