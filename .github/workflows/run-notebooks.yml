@@ -59,6 +59,7 @@ jobs:
         run: |
           export AUTOMATED_RUN=true
           jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute customers-and-products/genai-workshop.ipynb
+          mv customers-and-products/genai-workshop.nbconvert.ipynb customers-and-products/genai-workshop-w-outputs.ipynb
         env:
           ENV_FILE: ws.env
 
