@@ -11,7 +11,13 @@ The other companion notebooks contain code for staging data, building the Neo4j 
 
 ## Changelog
 
-### v4 (Sep 2nd, 2024 - Present)
+
+### v5 (Mar 20, 2025 - present)
+
+------------
+ - Directory restructure: Added second workshop to repo
+
+### [v4 (Sep 2nd, 2024 - Mar 20, 2025)](https://github.com/neo4j-product-examples/genai-workshop/releases/tag/v4.0)
 
 ------------
 - Transition from using Neo4j Sandbox to AuraDS
