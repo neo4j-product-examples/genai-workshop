@@ -41,6 +41,13 @@ jobs:
         env:
            ENV_FILE: ws.env
 
+      - name: Copy env file to each workshop subdir
+        run: |
+          cp ws.env customers-and-products/ws.env
+          cp ws.env talent/ws.env
+        env:
+           ENV_FILE: ws.env
+
       - name: Run customer and products data loading notebook
         run: |
           jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute customers-and-products/data-load.ipynb
