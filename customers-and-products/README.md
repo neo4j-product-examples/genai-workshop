@@ -1,4 +1,4 @@
-# Neo4j GenAI Workshop
+# Customer & Products GraphRAG Workshop
 
 Please see [`genai-workshop.ipynb`](genai-workshop.ipynb) which serves as the self-contained workshop. 
 
