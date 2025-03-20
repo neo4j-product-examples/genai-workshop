@@ -41,26 +41,33 @@ jobs:
         env:
            ENV_FILE: ws.env
 
-      - name: Run data loading notebook
+      - name: Copy env file to each workshop subdir
         run: |
-          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute data-load.ipynb
-          rm data-load.nbconvert.ipynb
+          cp ws.env customers-and-products/ws.env
+          cp ws.env talent/ws.env
+        env:
+           ENV_FILE: ws.env
+
+      - name: Run customer and products data loading notebook
+        run: |
+          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute customers-and-products/data-load.ipynb
+          rm customers-and-products/data-load.nbconvert.ipynb
         env:
           ENV_FILE: ws.env
 
-      - name: Run and save workshop notebook
+      - name: Run and save customer and products workshop notebook
         run: |
           export AUTOMATED_RUN=true
-          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute genai-workshop.ipynb
-          mv genai-workshop.nbconvert.ipynb genai-workshop-w-outputs.ipynb
+          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute customers-and-products/genai-workshop.ipynb
+          mv customers-and-products/genai-workshop.nbconvert.ipynb customers-and-products/genai-workshop-w-outputs.ipynb
         env:
           ENV_FILE: ws.env
 
-      - name: Run example-app-only notebook
+      - name: Run customer and products example-app-only notebook
         run: |
           export AUTOMATED_RUN=true
-          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute genai-example-app-only.ipynb
-          rm genai-example-app-only.nbconvert.ipynb
+          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute customers-and-products/genai-example-app-only.ipynb
+          rm customers-and-products/genai-example-app-only.nbconvert.ipynb
         env:
           ENV_FILE: ws.env
 
@@ -79,6 +86,6 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add genai-workshop-w-outputs.ipynb
+          git add customers-and-products/genai-workshop-w-outputs.ipynb
           git commit -m "Auto-commit: Run notebook and update notebook with output file"
           git push
