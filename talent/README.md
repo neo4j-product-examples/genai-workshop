@@ -19,4 +19,4 @@ Module 2:
 https://raw.githubusercontent.com/neo4j-product-examples/genai-workshop/refs/heads/main/talent/module_02_unstructured_data.ipynb
 
 Module 3: 
-https://raw.githubusercontent.com/neo4j-product-examples/genai-workshop/refs/heads/main/talent/module_03_graphrag_agent
+https://raw.githubusercontent.com/neo4j-product-examples/genai-workshop/refs/heads/main/talent/module_03_graphrag_agent.ipynb
