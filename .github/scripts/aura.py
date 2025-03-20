@@ -81,7 +81,7 @@ class AuraAPI:
         start = time.time()
         current_status = self.status(instance_id)
         while current_status != status and time.time() - start <= time_out:
-            time.sleep(20)
+            time.sleep(5)
             current_status = self.status(instance_id)
             logger.info("Waiting: {} {}".format(instance_id, current_status))
         return current_status
