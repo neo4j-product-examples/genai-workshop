@@ -65,7 +65,7 @@ jobs:
       - name: Run customer and products example-app-only notebook
         run: |
           export AUTOMATED_RUN=true
-          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute genai-example-app-only.ipynb
+          jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1200 --execute customers-and-products/genai-example-app-only.ipynb
           rm customers-and-products/genai-example-app-only.nbconvert.ipynb
         env:
           ENV_FILE: ws.env
