@@ -1,6 +1,6 @@
-# Neo4j GraphRAG Book Example
+# Neo4j GraphRAG Workshop
 
-This repository contains all code, data, and notebooks referenced in the Neo4j GraphRAG book. It provides a step-by-step guide to building a Retrieval-Augmented Generation (RAG) system using Neo4j, OpenAI, LangChain, and real-world financial filings.
+This repository contains all code, data, and notebooks for the Neo4j GraphRAG workshop. It provides a step-by-step guide to building a Retrieval-Augmented Generation (RAG) system using Neo4j, OpenAI, LangChain, and real-world financial filings.
 
 ---
 
@@ -33,31 +33,22 @@ This repository contains all code, data, and notebooks referenced in the Neo4j G
    - Copy `.env.sample` to `.env` and fill in:
      - `OPENAI_API_KEY`
      - `NEO4J_URI`, `NEO4J_USERNAME`, `NEO4J_PASSWORD`
-4. **Start Neo4j AuraDB** (see book for connection details)
+4. **Start Neo4j AuraDB** (see workshop materials for connection details)
 5. **Run the loader notebook** (`01_PDF_Loader_for_Neo4j_GraphRAG.ipynb`) to ingest data
 6. **Open `02_Retreivers_notebook.ipynb`** to run retrievals and explore the graph
 
 ---
 
 ## 📊 Data Files
-- All sample data used in the book is in the `data/` directory
+- All sample data used in the workshop is in the `data/` directory
 - You may add or replace files in `form10k-sample/` as needed for your experiments
-
----
-
-## 🧹 Cleaning Up Unnecessary Files
-- You may safely delete the following if not used in your workflow:
-    - `Additional_Info/__pycache__/`
-    - Any script or notebook in `Additional_Info/` not referenced in the book
-    - `neo4j_importer_model_2025-05-08.json` if not required
-- Keep only the notebooks and data files you use in your book walkthrough
 
 ---
 
 ## 📝 Notes
 - **Never commit secrets** — `.env` is in `.gitignore`
 - Use Jupyter or VS Code for interactive exploration
-- All notebooks are designed to be run step-by-step as described in the book
+- All notebooks are designed to be run step-by-step as described in the workshop
 
 ---
 
