@@ -1,0 +1,573 @@
+{
+  "version": "2.3.1-beta.0",
+  "visualisation": {
+    "nodes": [
+      {
+        "id": "n:2",
+        "position": {
+          "x": 168.86597738758664,
+          "y": -170.11696701984292
+        }
+      },
+      {
+        "id": "n:3",
+        "position": {
+          "x": 64.97023880515943,
+          "y": -271.4077774786122
+        }
+      },
+      {
+        "id": "n:1",
+        "position": {
+          "x": 301.8110071058923,
+          "y": -87.841503871026
+        }
+      }
+    ]
+  },
+  "dataModel": {
+    "version": "2.3.1-beta.0",
+    "graphSchemaRepresentation": {
+      "version": "1.0.0",
+      "graphSchema": {
+        "nodeLabels": [
+          {
+            "$id": "nl:2",
+            "token": "Company",
+            "properties": [
+              {
+                "$id": "p:3",
+                "token": "name",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:4",
+                "token": "ticker",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:3",
+            "token": "AssetManager",
+            "properties": [
+              {
+                "$id": "p:1",
+                "token": "managerCik",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:2",
+                "token": "managerName",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:1",
+            "token": "Document",
+            "properties": [
+              {
+                "$id": "p:9",
+                "token": "path",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          }
+        ],
+        "relationshipTypes": [
+          {
+            "$id": "rt:1",
+            "token": "OWNS",
+            "properties": [
+              {
+                "$id": "p:5",
+                "token": "position_status",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:6",
+                "token": "Value",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:7",
+                "token": "shares",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:8",
+                "token": "share_value",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "rt:2",
+            "token": "FILED",
+            "properties": []
+          }
+        ],
+        "nodeObjectTypes": [
+          {
+            "$id": "n:2",
+            "labels": [
+              {
+                "$ref": "#nl:2"
+              }
+            ]
+          },
+          {
+            "$id": "n:3",
+            "labels": [
+              {
+                "$ref": "#nl:3"
+              }
+            ]
+          },
+          {
+            "$id": "n:1",
+            "labels": [
+              {
+                "$ref": "#nl:1"
+              }
+            ]
+          }
+        ],
+        "relationshipObjectTypes": [
+          {
+            "$id": "r:1",
+            "type": {
+              "$ref": "#rt:1"
+            },
+            "from": {
+              "$ref": "#n:3"
+            },
+            "to": {
+              "$ref": "#n:2"
+            }
+          },
+          {
+            "$id": "r:2",
+            "type": {
+              "$ref": "#rt:2"
+            },
+            "from": {
+              "$ref": "#n:2"
+            },
+            "to": {
+              "$ref": "#n:1"
+            }
+          }
+        ],
+        "constraints": [
+          {
+            "$id": "c:2",
+            "name": "managerName_AssetManager_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:3"
+            },
+            "properties": [
+              {
+                "$ref": "#p:2"
+              }
+            ]
+          },
+          {
+            "$id": "c:1",
+            "name": "name_Company_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:2"
+            },
+            "properties": [
+              {
+                "$ref": "#p:3"
+              }
+            ]
+          },
+          {
+            "$id": "c:3",
+            "name": "path_Document_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:9"
+              }
+            ]
+          }
+        ],
+        "indexes": [
+          {
+            "$id": "i:1",
+            "name": "name_Company_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:2"
+            },
+            "properties": [
+              {
+                "$ref": "#p:3"
+              }
+            ]
+          },
+          {
+            "$id": "i:2",
+            "name": "managerName_AssetManager_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:3"
+            },
+            "properties": [
+              {
+                "$ref": "#p:2"
+              }
+            ]
+          },
+          {
+            "$id": "i:3",
+            "name": "path_Document_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:9"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "graphSchemaExtensionsRepresentation": {
+      "nodeKeyProperties": [
+        {
+          "node": {
+            "$ref": "#n:2"
+          },
+          "keyProperty": {
+            "$ref": "#p:3"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:3"
+          },
+          "keyProperty": {
+            "$ref": "#p:2"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:1"
+          },
+          "keyProperty": {
+            "$ref": "#p:9"
+          }
+        }
+      ]
+    },
+    "graphMappingRepresentation": {
+      "dataSourceSchema": {
+        "type": "local",
+        "tableSchemas": [
+          {
+            "name": "Company_Filings.csv",
+            "expanded": true,
+            "fields": [
+              {
+                "name": "cusip6",
+                "sample": "23135",
+                "recommendedType": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "cik",
+                "sample": "1018724",
+                "recommendedType": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "name",
+                "sample": "AMAZON",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "cusip",
+                "sample": "23135106",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "path_Windows",
+                "sample": "data/form10k-sample/0001018724-23-000004.pdf",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "path_Mac_ix",
+                "sample": "data\\form10k-sample/0001018724-23-000004.pdf",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "ticker",
+                "sample": "AMZN",
+                "recommendedType": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Asset_Manager_Holdings.csv",
+            "expanded": true,
+            "fields": [
+              {
+                "name": "source",
+                "sample": "https://sec.gov/Archives/edgar/data/1109448/0001532155-23-000156.txt",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "managerCik",
+                "sample": "1109448",
+                "recommendedType": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "managerName",
+                "sample": "ALLIANCEBERNSTEIN L.P.",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "reportCalendarOrQuarter",
+                "sample": "9/30/2023",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "cusip6",
+                "sample": "23135",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "cusip",
+                "sample": "23135106",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "companyName",
+                "sample": "AMAZON",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "position_status",
+                "sample": "current",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "ticker",
+                "sample": "AMZN",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "Value",
+                "sample": "6360000000.0",
+                "recommendedType": {
+                  "type": "float"
+                }
+              },
+              {
+                "name": "shares",
+                "sample": "50065439",
+                "recommendedType": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "share_value",
+                "sample": "127.0337408",
+                "recommendedType": {
+                  "type": "float"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "nodeMappings": [
+        {
+          "node": {
+            "$ref": "#n:3"
+          },
+          "tableName": "Asset_Manager_Holdings.csv",
+          "propertyMappings": [
+            {
+              "fieldName": "managerCik",
+              "property": {
+                "$ref": "#p:1"
+              }
+            },
+            {
+              "fieldName": "managerName",
+              "property": {
+                "$ref": "#p:2"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:2"
+          },
+          "tableName": "Asset_Manager_Holdings.csv",
+          "propertyMappings": [
+            {
+              "fieldName": "companyName",
+              "property": {
+                "$ref": "#p:3"
+              }
+            },
+            {
+              "fieldName": "ticker",
+              "property": {
+                "$ref": "#p:4"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:1"
+          },
+          "tableName": "Company_Filings.csv",
+          "propertyMappings": [
+            {
+              "property": {
+                "$ref": "#p:9"
+              },
+              "fieldName": "path_Windows"
+            }
+          ]
+        }
+      ],
+      "relationshipMappings": [
+        {
+          "relationship": {
+            "$ref": "#r:1"
+          },
+          "tableName": "Asset_Manager_Holdings.csv",
+          "propertyMappings": [
+            {
+              "fieldName": "position_status",
+              "property": {
+                "$ref": "#p:5"
+              }
+            },
+            {
+              "fieldName": "Value",
+              "property": {
+                "$ref": "#p:6"
+              }
+            },
+            {
+              "fieldName": "shares",
+              "property": {
+                "$ref": "#p:7"
+              }
+            },
+            {
+              "fieldName": "share_value",
+              "property": {
+                "$ref": "#p:8"
+              }
+            }
+          ],
+          "fromMapping": {
+            "fieldName": "managerName"
+          },
+          "toMapping": {
+            "fieldName": "companyName"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:2"
+          },
+          "tableName": "Company_Filings.csv",
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "name"
+          },
+          "toMapping": {
+            "fieldName": "path_Windows"
+          }
+        }
+      ]
+    },
+    "configurations": {
+      "idsToIgnore": []
+    }
+  }
+}
