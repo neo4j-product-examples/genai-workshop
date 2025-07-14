@@ -1,0 +1,7 @@
+neo4j-graphrag[openai]>=0.2.0
+python-dotenv>=1.0.0
+pandas>=2.0.0
+jupyter>=1.0.0
+numpy>=1.24.0,<2.0.0
+rapidfuzz>=3.0.0
+spacy>=3.6.0
